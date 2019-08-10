@@ -1,14 +1,10 @@
-import Link from "next/link";
+import Navbar from "../components/Navbar";
 
+// название - любое
 const Blablabla = () => {
   return (
     <div>
-      <Link href="/about">
-        <button>About</button>
-      </Link>
-      <Link href="/contacts">
-        <a>Contacts</a>
-      </Link>
+      <Navbar />
       <h1>Main Page</h1>
     </div>
   );
