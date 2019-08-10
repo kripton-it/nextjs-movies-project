@@ -1,51 +1,49 @@
 // import fetch from 'isomorphic-unfetch';
+import axios from "axios";
+import React, { Component } from "React";
 
-const Index = () => {
+const url = "https://jsonplaceholder.typicode.com/posts";
+
+/* const Index = ({ posts }) => {
   return (
     <div>
       <h1>Main Page</h1>
+      <ul>
+        {posts.map(({id, title}) => (
+          <li key={id}>{title}</li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-Index.getInitialProps = async ({ req }) => {
-  console.log("fetching");
-  // const res = await fetch('https://api.github.com/repos/zeit/next.js');
-  // const json = await res.json();
-  // return { stars: json.stargazers_count };
-};
-
-export default Index;
-
-/* import React, { Component } from "react";
+Index.getInitialProps = async () => {
+  const res = await axios.get(url);
+  return { posts: res.data };
+}; */
 
 class Index extends Component {
   constructor(props) {
     super(props);
-    // сработает и на сервере, и на клиенте
-    // console.log("fetching");
   }
 
-  // сработает ТОЛЬКО на клиенте
-  // componentDidMount() {
-  //   console.log("fetching");
-  // }
-
-  static async getInitialProps({ req }) {
-    // При первом рендере сработает только на сервере
-    // При последующих - только на клиенте
-    console.log("fetching");
-    // const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
-    // return { userAgent };
+  static async getInitialProps() {
+    const res = await axios.get(url);
+    return { posts: res.data };
   }
 
   render() {
     return (
       <div>
         <h1>Main Page</h1>
+        <ul>
+          {this.props.posts.map(({ id, title }) => (
+            <li key={id}>{title}</li>
+          ))}
+        </ul>
       </div>
     );
   }
 }
 
-export default Index;*/
+export default Index;
