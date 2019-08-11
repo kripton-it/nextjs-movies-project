@@ -40,7 +40,7 @@ class Index extends Component {
         <ul>
           {this.props.posts.map(({ id, title }) => (
             <li key={id}>
-              <Link href={`/post?id=${id}`}>
+              <Link href={`/post?id=${id}`} as={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
             </li>
