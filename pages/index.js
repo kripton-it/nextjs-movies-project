@@ -1,6 +1,7 @@
 // import fetch from 'isomorphic-unfetch';
 import axios from "axios";
 import React, { Component } from "React";
+import Link from "next/link";
 
 const url = "https://jsonplaceholder.typicode.com/posts";
 
@@ -38,7 +39,11 @@ class Index extends Component {
         <h1>Main Page</h1>
         <ul>
           {this.props.posts.map(({ id, title }) => (
-            <li key={id}>{title}</li>
+            <li key={id}>
+              <Link href={`/post?id=${id}`}>
+                <a>{title}</a>
+              </Link>
+            </li>
           ))}
         </ul>
       </div>
